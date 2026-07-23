@@ -1,0 +1,8 @@
+import { NextResponse } from "next/server";
+import { requireAdminApi } from "@/lib/auth";
+import { getDb } from "@/lib/db";
+
+export const runtime = "nodejs";
+
+export async function PUT(request:Request,{params}:{params:Promise<{id:string}>}){if(!(await requireAdminApi()))return NextResponse.json({error:"Não autorizado."},{status:401}); const {id}=await params; const b=await request.json().catch(()=>({})); const title=String(b.title||"").trim(),arrival=String(b.arrivalDate||""),ret=String(b.returnDate||""); if(!title||!arrival||!ret)return NextResponse.json({error:"Preencha os campos obrigatórios."},{status:400}); if(ret<arrival)return NextResponse.json({error:"A devolução não pode ser anterior à chegada."},{status:400}); const result=getDb().prepare(`UPDATE package_lists SET title=?,arrival_date=?,return_date=?,morning_open=?,morning_close=?,afternoon_open=?,afternoon_close=?,notes=?,status=?,updated_at=CURRENT_TIMESTAMP WHERE id=?`).run(title,arrival,ret,String(b.morningOpen||"09:00"),String(b.morningClose||"12:00"),String(b.afternoonOpen||"14:00"),String(b.afternoonClose||"18:00"),String(b.notes||"").trim()||null,b.status==="ARQUIVADA"?"ARQUIVADA":"ATIVA",Number(id)); if(!result.changes)return NextResponse.json({error:"Lista não encontrada."},{status:404}); return NextResponse.json({id:Number(id)});}
+export async function DELETE(_:Request,{params}:{params:Promise<{id:string}>}){if(!(await requireAdminApi()))return NextResponse.json({error:"Não autorizado."},{status:401}); const {id}=await params; const result=getDb().prepare("DELETE FROM package_lists WHERE id=?").run(Number(id)); if(!result.changes)return NextResponse.json({error:"Lista não encontrada."},{status:404}); return NextResponse.json({ok:true});}

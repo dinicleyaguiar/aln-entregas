@@ -1,0 +1,94 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js
+.next/
+out/
+
+# Production builds
+dist/
+build/
+
+# Local database and generated data
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.sqlite
+data/*.sqlite3
+
+# Keep the data directory in Git
+!data/.gitkeep
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+.env.example
+
+# Keep the example environment file
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel
+.vercel/
+
+# Cache
+.cache/
+.eslintcache
+.turbo/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Archives and backups
+*.zip
+*.rar
+*.7z
+*.bak
+*.backup
+
+
+# FEATURES
+CORRIGIR-LOGIN.md
+CORRIGIR-LOGIN.ps1
+README.md
+VERIFICAR-CORRECAO.ps1
+

@@ -1,5 +1,12 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
+  output: "standalone",
+  poweredByHeader: false,
+
+  outputFileTracingExcludes: {
+    "/*": ["./data/**/*", "./backups/**/*", "./_prod/**/*"],
+  },
+
   async headers() {
     return [
       {

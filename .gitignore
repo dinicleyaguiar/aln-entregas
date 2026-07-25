@@ -93,4 +93,7 @@ README.md
 VERIFICAR-CORRECAO.ps1
 
 
-_prod/
+_prod
+_prod/**
+.env.production
+backups/

@@ -31,7 +31,7 @@ export default function HomePage() {
               Veja se sua encomenda já chegou
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-slate-600 sm:text-lg sm:leading-7">
-              Digite seu nome para conferir a disponibilidade, os dias restantes para retirada e os horários de atendimento.
+              Digite o seu nome para conferir a disponibilidade, os dias restantes para retirada e os horários de atendimento.
             </p>
           </div>
 

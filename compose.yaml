@@ -1,0 +1,30 @@
+services:
+  app:
+    container_name: aln-entregas-app
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    working_dir: /app
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"
+      WATCHPACK_POLLING: "true"
+
+    volumes:
+      - .:/app
+      - aln_node_modules:/app/node_modules
+      - aln_next_cache:/app/.next
+
+    command: npm run dev -- -H 0.0.0.0
+
+    restart: unless-stopped
+
+volumes:
+  aln_node_modules:
+  aln_next_cache:

@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+Dockerfile
+compose.yaml
+npm-debug.log*
+*.log
+.env.local
+.env.production
+.DS_Store
+Thumbs.db
